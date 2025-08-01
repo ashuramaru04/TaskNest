@@ -17,6 +17,11 @@ public class Project {
     private LocalDate expirationDate;
     private final List<User> assignedUsers;
 
+    public Project(Long id, List<User> assignedUsers) {
+        this.id = id;
+        this.assignedUsers = assignedUsers;
+    }
+
 
     public void activate() {
         this.active = true;
@@ -43,6 +48,23 @@ public class Project {
         return LocalDate.now().isBefore(starDate);
     }
 
+    public void assignUser (User user) {
+        if(!assignedUsers.contains(user)) {
+        assignedUsers.add(user);
+        }
 
+    }
+    public void unassignUser (User user){
+        assignedUsers.remove(user);
+    }
+
+    public boolean isUserAssigned(User user){
+        return assignedUsers.contains(user);
+    }
+
+    public List<User> getAssignedUsers(User user){
+        return List.copyOf(assignedUsers);
+    }
 }
+
 
