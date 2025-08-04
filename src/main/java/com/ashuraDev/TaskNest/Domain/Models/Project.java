@@ -64,7 +64,7 @@ public class Project {
 
     public List<User> getAssignedUsers(User user){
         return List.copyOf(assignedUsers);
-    }
+     }
 }
 
 
