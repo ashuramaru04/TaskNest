@@ -10,11 +10,14 @@ public interface ProjectService {
 
     void deleteProject(Long id);
 
+    Project updateProject(Long id, Project project);
+
     List<Project> getProjectById(Long id);
 
     List<Project> getTaskByProjectId(Long projectId);
 
-    List<Project> getUserByProjectId(Long userId);
+    List<Project> getProjectsByOwnerId(Long userId);
+
 
 
 }

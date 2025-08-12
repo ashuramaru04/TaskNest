@@ -2,7 +2,7 @@ package com.ashuraDev.TaskNest.Domain.Models;
 
 
 
-import jakarta.persistence.Entity;
+
 import lombok.Data;
 
 import java.time.LocalDate;

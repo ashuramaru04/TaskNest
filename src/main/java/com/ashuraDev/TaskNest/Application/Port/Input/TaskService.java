@@ -1,8 +1,9 @@
 package com.ashuraDev.TaskNest.Application.Port.Input;
 
-import org.springframework.scheduling.config.Task;
+import com.ashuraDev.TaskNest.Domain.Models.Task;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TaskService {
 
@@ -12,7 +13,7 @@ public interface TaskService {
 
     void deleteTask(Long id);
 
-    Task getTaskById(Long id);
+    Optional<Task> getTaskById(Long id);
 
     List<Task> getTasksByUserId(Long userId);
 
