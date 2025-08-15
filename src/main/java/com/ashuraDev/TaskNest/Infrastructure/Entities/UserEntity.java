@@ -4,9 +4,12 @@ package com.ashuraDev.TaskNest.Infrastructure.Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+import java.time.LocalDate;
+
+
 @Entity
-@Table
+@Table(name = "users")
+@Data
 public class UserEntity {
 
     @Id
@@ -18,7 +21,9 @@ public class UserEntity {
     private String email;
     private String fullName;
     private String passwordHash;
-
+    private Boolean isActive;
+    private LocalDate createAt;
+    private LocalDate updateAt;
 
 
 }

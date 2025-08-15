@@ -34,7 +34,7 @@ public class ProjectUseCaseImpl implements ProjectService {
                 project.getProjectState(),
                 project.getActive(),
                 project.getStarDate(),
-                project.getExpirationDate()
+                project.getEndDate()
         );
 
         return projectRepository.save(existing);
