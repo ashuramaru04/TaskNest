@@ -1,14 +1,18 @@
 package com.ashuraDev.TaskNest.Infrastructure.Adapter;
 
+import com.ashuraDev.TaskNest.Application.DTOs.ProjectResponseDTO;
 import com.ashuraDev.TaskNest.Application.Port.Out.ProjectRepository;
 import com.ashuraDev.TaskNest.Domain.Models.Project;
+import com.ashuraDev.TaskNest.Infrastructure.Entities.ProjectEntity;
 import com.ashuraDev.TaskNest.Infrastructure.Mapper.ProjectEntityMapper;
 import com.ashuraDev.TaskNest.Infrastructure.Repository.SpringDataProjectRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Component
 public class ProjectJpaAdapter implements ProjectRepository {
 
     private final SpringDataProjectRepository repository;
@@ -19,24 +23,27 @@ public class ProjectJpaAdapter implements ProjectRepository {
         this.mapper = mapper;
     }
 
+
     @Override
     public Project save(Project project) {
-        return mapper.toDomain(repository.save(mapper.toEntity(project)));
+        ProjectEntity entity = mapper.toEntity(project);
+        ProjectEntity saved = repository.save(entity);
+        return mapper.toDomain(saved);
     }
 
     @Override
-    public List<Project> findProjectById(Long id) {
+    public Optional<Project> findProjectById(Long id) {
         return repository.findById(id).map(mapper::toDomain);
     }
 
     @Override
     public Optional<Project> update(Long id) {
-        return repository.findById(id).map(mapper::toDomain);
+        return Optional.empty();
     }
 
     @Override
     public List<Project> findAll() {
-        return repository.findAll().stream()
+        return repository.findAll().stream()                 
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }

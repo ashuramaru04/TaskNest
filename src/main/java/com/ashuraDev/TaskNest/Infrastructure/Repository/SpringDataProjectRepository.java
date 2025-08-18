@@ -9,4 +9,8 @@ public interface SpringDataProjectRepository extends JpaRepository<ProjectEntity
 
 
     List<ProjectEntity> findByOwnerId(Long ownerId);
+
+    Long id(Long id);
+
+    Long OwnerId(Long ownerId);
 }
