@@ -19,6 +19,8 @@ public class Project {
     private Boolean active;
     private LocalDate starDate;
     private LocalDate endDate;
+    private LocalDate createAt;
+    private LocalDate UpdateAt;
     private List<User> assignedUsers;
 
     public void activate() {
@@ -64,6 +66,13 @@ public class Project {
         return List.copyOf(assignedUsers);
      }
 
+    public Project(Long id, String name, String description, LocalDate startDate, LocalDate endDate) {
+
+        this.projectName = name;
+        this.description = description;
+        this.starDate = startDate;
+        this.endDate = endDate;
+    }
 
 }
 

@@ -26,7 +26,7 @@ public class ProjectJpaAdapter implements ProjectRepository {
 
     @Override
     public List<Project> findProjectById(Long id) {
-        return List.of();
+        return repository.findById(id).map(mapper::toDomain);
     }
 
     @Override
