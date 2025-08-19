@@ -2,7 +2,9 @@ package com.ashuraDev.TaskNest.Infrastructure.Entities;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -10,6 +12,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "users")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
 
     @Id
@@ -17,8 +21,13 @@ public class UserEntity {
     private Long id;
 
     private Boolean isAdmin;
-    private String userName;
+    @Column(nullable = false)
+    private String name;
+
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     private String fullName;
     private String passwordHash;
     private Boolean isActive;

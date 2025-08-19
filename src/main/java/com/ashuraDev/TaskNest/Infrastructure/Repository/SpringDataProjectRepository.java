@@ -2,15 +2,11 @@ package com.ashuraDev.TaskNest.Infrastructure.Repository;
 
 import com.ashuraDev.TaskNest.Infrastructure.Entities.ProjectEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface SpringDataProjectRepository extends JpaRepository<ProjectEntity, Long> {
 
 
-    List<ProjectEntity> findByOwnerId(Long ownerId);
 
-    Long id(Long id);
-
-    Long OwnerId(Long ownerId);
 }

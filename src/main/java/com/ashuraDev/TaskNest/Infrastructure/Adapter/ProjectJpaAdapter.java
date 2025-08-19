@@ -1,6 +1,5 @@
 package com.ashuraDev.TaskNest.Infrastructure.Adapter;
 
-import com.ashuraDev.TaskNest.Application.DTOs.ProjectResponseDTO;
 import com.ashuraDev.TaskNest.Application.Port.Out.ProjectRepository;
 import com.ashuraDev.TaskNest.Domain.Models.Project;
 import com.ashuraDev.TaskNest.Infrastructure.Entities.ProjectEntity;
@@ -43,7 +42,7 @@ public class ProjectJpaAdapter implements ProjectRepository {
 
     @Override
     public List<Project> findAll() {
-        return repository.findAll().stream()                 
+        return repository.findAll().stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }
@@ -55,7 +54,7 @@ public class ProjectJpaAdapter implements ProjectRepository {
 
     @Override
     public List<Project> getByOwnerId(Long userId) {
-        return repository.findByOwnerId(userId).stream()
+        return repository.findById(userId).stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
     }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class User {
     private final Long id;
     private boolean isAdmin;
-    private String userName;
+    private String name;
     private String email;
     private String fullName;
     private String passwordHash;
@@ -21,9 +21,9 @@ public class User {
     private LocalDate updateAt;
 
     //create a user
-    public User(Long id, String username, String email, String passwordHash, boolean active, LocalDate createdAt) {
+    public User(Long id, String name, String email, String passwordHash, boolean active, LocalDate createdAt) {
         this.id = id;
-        this.userName = username;
+        this.name = name;
         this.email = email;
         this.passwordHash = passwordHash;
         this.isActive = active;
