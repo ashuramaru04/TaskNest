@@ -35,4 +35,9 @@ public class UserEntity {
     private LocalDate updateAt;
 
 
+    public UserEntity(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 }

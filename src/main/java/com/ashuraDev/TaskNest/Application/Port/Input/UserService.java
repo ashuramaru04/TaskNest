@@ -11,10 +11,13 @@ public interface UserService {
 
     Optional<User> updateUser(Long id);
 
+    Optional<User> findByEmail(String email);
+
     void deleteUser(Long id);
 
     List<User> getUserById(Long id);
 
     List<User> getALLusers();
+
 
 }

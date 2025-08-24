@@ -28,14 +28,8 @@ public class ProjectUseCaseImpl implements ProjectService {
     public Project updateProject(Long id, Project project) {
         Project existing = projectRepository.update(id)
                 .orElseThrow(() -> new IllegalArgumentException("Proyecto no encontrado"));
-        existing.updateDetails(
-                project.getProjectName(),
-                project.getDescription(),
-                project.getProjectState(),
-                project.getActive(),
-                project.getStarDate(),
-                project.getEndDate()
-        );
+
+
 
         return projectRepository.save(existing);
     }

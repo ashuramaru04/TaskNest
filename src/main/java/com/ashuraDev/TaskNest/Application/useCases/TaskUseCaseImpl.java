@@ -29,8 +29,7 @@ public class TaskUseCaseImpl implements TaskService {
                 .orElseThrow(()-> new IllegalArgumentException("task not find"));
         existingTask.setTitle(updatetask.getTitle());
         existingTask.setDescription(updatetask.getDescription());
-        existingTask.setExpirationDate(updatetask.getExpirationDate());
-        existingTask.setAssignedUser(updatetask.getAssignedUser());
+        existingTask.setDueDate(updatetask.getDueDate());
 
         return taskRepository.save(existingTask);
     }
@@ -50,7 +49,7 @@ public class TaskUseCaseImpl implements TaskService {
 
     @Override
     public List<Task> getTasksByUserId(Long userId) {
-        return taskRepository.findUserById(userId);
+        return taskRepository.findByUserId(userId);
     }
 
     @Override
