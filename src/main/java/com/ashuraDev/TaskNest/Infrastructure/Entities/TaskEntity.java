@@ -29,4 +29,11 @@ public class TaskEntity {
     @Column(name = "user_id")
     private Long userId;
 
+    //Mapper constructor
+
+    public TaskEntity(Long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
 }

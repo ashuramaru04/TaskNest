@@ -19,4 +19,14 @@ public class Task {
     private boolean completed;
     private Long projectId;
     private Long userId;
+
+
+
+
+    //Mapper constructor
+    public Task(Long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
 }

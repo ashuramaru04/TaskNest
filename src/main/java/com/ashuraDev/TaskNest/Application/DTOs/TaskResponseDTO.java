@@ -1,19 +1,16 @@
 package com.ashuraDev.TaskNest.Application.DTOs;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
 public class TaskResponseDTO {
     Long id;
     String title;
     String description;
-    boolean state;
-    LocalDate dueDate;
-    Long userId;
-    Long projectId;
-    LocalDate createdAt;
-    LocalDate updateAt;
-
 
 }
