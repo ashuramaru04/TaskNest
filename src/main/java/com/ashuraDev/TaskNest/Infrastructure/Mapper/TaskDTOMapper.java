@@ -10,16 +10,23 @@ public class TaskDTOMapper {
         return new Task(
                 null,
                 dto.getTitle(),
-                dto.getDescription()
+                dto.getDescription(),
+                false,
+                dto.getDueDate(),
+                dto.getUserId(),
+                dto.getProjectId()
         );
     }
     public static TaskResponseDTO toResponse(Task task){
-        return new TaskResponseDTO(
-                task.getUserId(),
-                task.getTitle(),
-                task.getDescription()
-
-                );
+        TaskResponseDTO dto = new TaskResponseDTO();
+        dto.setId(task.getId());
+        dto.setTitle(task.getTitle());
+        dto.setDescription(task.getDescription());
+        dto.setCompleted(task.isCompleted());
+        dto.setDueDate(task.getDueDate());
+        dto.setUserId(task.getUserId());
+        dto.setProjectId(task.getProjectId());
+        return dto;
     }
 
 }

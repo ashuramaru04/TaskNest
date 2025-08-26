@@ -4,11 +4,13 @@ package com.ashuraDev.TaskNest.Application.useCases;
 import com.ashuraDev.TaskNest.Application.Port.Input.TaskService;
 import com.ashuraDev.TaskNest.Application.Port.Out.TaskRepository;
 import com.ashuraDev.TaskNest.Domain.Models.Task;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskUseCaseImpl implements TaskService {
     private final TaskRepository taskRepository;
 
@@ -20,6 +22,9 @@ public class TaskUseCaseImpl implements TaskService {
     @Override
     public Task createTask(Task task) {
         task.setCompleted(false);
+        if (task.getTitle() == null || task.getTitle().isBlank()) {
+            throw new IllegalArgumentException("El título de la tarea es obligatorio");
+        }
         return taskRepository.save(task) ;
     }
 
@@ -52,13 +57,36 @@ public class TaskUseCaseImpl implements TaskService {
         return taskRepository.findByUserId(userId);
     }
 
+    public Task assignTask(Long taskId, Long userId) {
+        Optional<Task> taskOpt = taskRepository.findById(taskId);
+        if (taskOpt.isPresent()) {
+            Task task = taskOpt.get();
+            task.setUserId(userId);
+            return taskRepository.save(task);
+        }
+        throw new RuntimeException("Task not found with id: " + taskId);
+    }
+    public Task markAsCompleted(Long taskId) {
+        Optional<Task> taskOpt = taskRepository.findById(taskId);
+        if (taskOpt.isPresent()) {
+            Task task = taskOpt.get();
+            task.setCompleted(true);
+            return taskRepository.save(task);
+        }
+        throw new RuntimeException("Task not found with id: " + taskId);
+    }
+
     @Override
     public void completeTask(Long taskId) {
-        Task task = taskRepository.findById(taskId)
-                .orElseThrow(()-> new IllegalArgumentException("task not find"));
-        task.setCompleted(true);
-        taskRepository.save(task);
-
-
+        taskRepository.findById(taskId)
+                .map(task -> {
+                    task.setCompleted(true);
+                    return taskRepository.save(task);
+                })
+                .orElseThrow(() -> new RuntimeException("task not find:" + taskId));
     }
+    public List<Task> getTasksByProject(Long projectId) {
+        return taskRepository.findByProjectId(projectId);
+    }
+
 }

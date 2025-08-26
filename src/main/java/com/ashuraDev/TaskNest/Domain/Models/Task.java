@@ -15,18 +15,14 @@ public class Task {
     private Long id;
     private String title;
     private String description;
-    private LocalDate dueDate;
     private boolean completed;
+    private LocalDate dueDate;
+
     private Long projectId;
     private Long userId;
 
 
 
 
-    //Mapper constructor
-    public Task(Long id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-    }
+
 }
