@@ -3,6 +3,7 @@ package com.ashuraDev.TaskNest.Application.Port.Input;
 import com.ashuraDev.TaskNest.Domain.Models.Project;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProjectService {
 
@@ -12,7 +13,9 @@ public interface ProjectService {
 
     Project updateProject(Long id, Project project);
 
-    List<Project> getProjectById(Long id);
+    Optional<Project> getALLProjects();
+
+    Optional<Project> getProjectById(Long id);
 
     List<Project> getTaskByProjectId(Long projectId);
 

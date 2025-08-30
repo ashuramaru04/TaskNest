@@ -3,9 +3,12 @@ package com.ashuraDev.TaskNest.Application.useCases;
 import com.ashuraDev.TaskNest.Application.Port.Input.ProjectService;
 import com.ashuraDev.TaskNest.Application.Port.Out.ProjectRepository;
 import com.ashuraDev.TaskNest.Domain.Models.Project;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class ProjectUseCaseImpl implements ProjectService {
     private final ProjectRepository projectRepository;
 
@@ -34,10 +37,15 @@ public class ProjectUseCaseImpl implements ProjectService {
         return projectRepository.save(existing);
     }
 
+    @Override
+    public Optional<Project> getALLProjects() {
+        return projectRepository.findAll();
+    }
+
 
     @Override
-    public List<Project> getProjectById(Long id) {
-        return List.of();
+    public Optional<Project> getProjectById(Long id) {
+        return projectRepository.findProjectById(id);
     }
 
     @Override

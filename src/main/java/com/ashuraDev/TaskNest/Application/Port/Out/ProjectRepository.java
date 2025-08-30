@@ -9,7 +9,7 @@ public interface ProjectRepository {
     Project save(Project project);
     Optional<Project> findProjectById(Long id);
     Optional<Project> update(Long id);
-    List<Project> findAll();
+    Optional<Project> findAll();
     void deleteProjectById(Long id);
     List<Project> getByOwnerId(Long userId);
 }
