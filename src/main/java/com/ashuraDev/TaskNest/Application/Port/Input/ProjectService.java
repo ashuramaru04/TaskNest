@@ -13,7 +13,7 @@ public interface ProjectService {
 
     Project updateProject(Long id, Project project);
 
-    Optional<Project> getALLProjects();
+    List<Project> getALLProjects();
 
     Optional<Project> getProjectById(Long id);
 

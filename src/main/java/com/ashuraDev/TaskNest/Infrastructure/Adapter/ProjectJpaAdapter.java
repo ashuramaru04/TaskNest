@@ -41,7 +41,7 @@ public class ProjectJpaAdapter implements ProjectRepository {
     }
 
     @Override
-    public Optional<Project> findAll() {
+    public List<Project> findAll() {
         return repository.findAll().stream()
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());

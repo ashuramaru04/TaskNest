@@ -11,8 +11,8 @@ public class TaskDTOMapper {
                 null,
                 dto.getTitle(),
                 dto.getDescription(),
-                false,
                 dto.getDueDate(),
+                false,
                 dto.getUserId(),
                 dto.getProjectId()
         );

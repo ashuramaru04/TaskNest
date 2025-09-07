@@ -38,7 +38,7 @@ public class ProjectUseCaseImpl implements ProjectService {
     }
 
     @Override
-    public Optional<Project> getALLProjects() {
+    public List<Project> getALLProjects() {
         return projectRepository.findAll();
     }
 

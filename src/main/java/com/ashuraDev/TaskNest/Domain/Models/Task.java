@@ -15,8 +15,9 @@ public class Task {
     private Long id;
     private String title;
     private String description;
-    private boolean completed;
     private LocalDate dueDate;
+    private boolean completed;
+
 
     private Long projectId;
     private Long userId;
