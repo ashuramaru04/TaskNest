@@ -3,14 +3,18 @@ package com.ashuraDev.TaskNest.Domain.Models;
 
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    private final Long id;
+    private  Long id;
     private boolean isAdmin;
     private String name;
     private String email;
@@ -32,6 +36,8 @@ public class User {
     }
 
 
+
+
 // tell us if the User is active
 
     public void activate() {
@@ -40,6 +46,7 @@ public class User {
     public void deactivate() {
         this.isActive = false;
     }
+
 
     public User(Long id, String name, String email) {
         this.id = id;
